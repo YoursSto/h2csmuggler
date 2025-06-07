@@ -46,7 +46,7 @@ def establish_tcp_connection(proxy_url):
 
     retSock = sock
     if proxy_url.scheme == "https":
-        retSock = ssl.wrap_socket(sock, ssl_version=ssl.PROTOCOL_TLS)
+        retSock = ssl.create_default_context().wrap_socket(sock, server_hostname=proxy_url.hostname)
 
     retSock.settimeout(MAX_TIMEOUT)
     retSock.connect(connect_args)
@@ -99,7 +99,7 @@ def getData(h2_connection, sock):
     events = []
     try:
         while True:
-            newdata = sock.recv(8192)
+            newdata = sock.recv(10000)
             events += h2_connection.receive_data(newdata)
             if len(events) > 0 and isinstance(events[-1], StreamEnded):
                 raise socket.timeout()
@@ -145,7 +145,7 @@ def sendData(h2_connection, connection, data, stream_id):
         print("[ERROR] Window closed. Incomplete data transmission.",
               file=sys.stderr)
 
-    connection.write(h2_connection.data_to_send())
+    connection.send(h2_connection.data_to_send())
 
 
 def sendSmuggledRequest(h2_connection, connection,

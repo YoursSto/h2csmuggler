@@ -1,8 +1,10 @@
 
-# h2cSmuggler
+# h2cSmuggler - Plotwist
 
 ![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)
 ![Python version](https://img.shields.io/badge/python-3.x-blue.svg)
+
+✅ **Note:** This repository was **forked to add SSL support**.
 
 ## Description
 
@@ -17,6 +19,8 @@ See my detailed write-up below for:
 * Remediation guidance
 
 Here: [https://labs.bishopfox.com/tech-blog/h2c-smuggling-request-smuggling-via-http/2-cleartext-h2c](https://labs.bishopfox.com/tech-blog/h2c-smuggling-request-smuggling-via-http/2-cleartext-h2c)
+
+You can also try this tool against the **Plotwist challenge (N0PSctf 2025).**
 
 ### How to test?
 
@@ -55,7 +59,7 @@ To remediate, do not forward user-supplied values for `Upgrade` or `Connection` 
 
 ## Install Instructions
 
-The only dependency is the Python hyper-h2 library:
+The only dependency is the Python` hyper-h2` library:
 ```sh
 pip3 install h2
 ```
@@ -184,15 +188,12 @@ A: No. Consider a TLS-terminating TCP load balancer (e.g., ELB) proxying directl
 
 **Q: Why does the smuggled request URI require a scheme? What is it used for?**
 
-A: The HTTP/2 protocol requires a `:scheme` psuedo-header. For our use case, `http` vs. `https` likely doesn't matter. For more details, see [HTTP/2 RFC: Section 8.1.2.3](https://http2.github.io/http2-spec/#rfc.section.8.1.2.3).
+A: The HTTP/2 protocol requires a `:scheme` pseudo-header. For our use case, `http` vs. `https` likely doesn't matter. For more details, see [HTTP/2 RFC: Section 8.1.2.3](https://http2.github.io/http2-spec/#rfc.section.8.1.2.3).
 
 **Q: What should I use as the hostname for the back-end server?**
 
 A: It's best to start with the same hostname as the edge server. Next, try experimenting with alternative hostname values.
 
 
-### Author
-
-Twitter: [@theBumbleSec](https://twitter.com/theBumbleSec)
-
-GitHub: [the-bumble](https://github.com/the-bumble/)
+### Improvements 
+- ✅ Added SSL support in this fork
