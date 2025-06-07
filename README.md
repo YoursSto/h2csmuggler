@@ -3,10 +3,18 @@
 
 ![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)
 ![Python version](https://img.shields.io/badge/python-3.x-blue.svg)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/YoursSto/h2csmuggler)
 
 ✅ **Note:** This repository was **forked to add SSL support**.
 
-## Description
+1. [Description](#description)
+2. [Installation](#install-instructions)
+3. [Usage](#usage)
+4. [Improvements](#improvements)
+
+Visit this repository [DeepWiki page](https://deepwiki.com/YoursSto/h2csmuggler) to learn more about it.
+
+## 1. Description
 
 h2cSmuggler smuggles HTTP traffic past insecure edge-server `proxy_pass` configurations by establishing HTTP/2 cleartext (h2c) communications with h2c-compatible back-end servers, allowing a bypass of proxy rules and access controls.
 <p align="center">
@@ -22,15 +30,13 @@ Here: [https://labs.bishopfox.com/tech-blog/h2c-smuggling-request-smuggling-via-
 
 You can also try this tool against the **Plotwist challenge (N0PSctf 2025).**
 
-### How to test?
+### 🧪 Recon : How to Test? 
 
 Any proxy endpoint that forwards h2c upgrade headers can be affected. Because h2c is intended to be performed only on cleartext channels, detection on HTTPS services often yields true positives.
 
 By contrast, HTTP services may result in false positives. For example, h2c-enabled proxies may respond to the upgrade instead of forwarding it to an h2c back end.
 
-Use the `--scan-list` option to test one or more web servers to look for affected `proxy_pass` endpoints. Consider using a list of directories discovered from directory enumeration, such as:
-
-**urls.txt**
+Use the `--scan-list` option to test one or more web servers to look for affected `proxy_pass` endpoints. Consider using a list of directories discovered from directory enumeration, such as **urls.txt**
 ```
 https://www.example.com/
 https://www.example.com/api/
@@ -51,13 +57,13 @@ Or, an individual test can be performed with:
 #### Detecting with other popular tools:
 * [Burp Extension (Active Scan check)](https://github.com/BishopFox/h2csmuggler/blob/master/extensions/BurpExtension/h2cSmugglingCheck.py)
 * Nuclei-Template (Coming soon! [Requires this issue to be fixed](https://github.com/projectdiscovery/nuclei/issues/256#issuecomment-679038443))
-### Exploitation
+### 🕵️‍♂️ Exploitation
 
 Once you have identified an affected endpoint that can be used for tunneling, you can now access or brute-force internal endpoints on the back-end server and provide custom verbs or headers. In the [demo below](#test-environment-and-demo), we demonstrate accessing an internal `/flag` endpoint by using h2c smuggling to bypass proxy deny rules.
 
 To remediate, do not forward user-supplied values for `Upgrade` or `Connection` headers. See the [technical post](https://labs.bishopfox.com/tech-blog/h2c-smuggling-request-smuggling-via-http/2-cleartext-h2c) for additional guidance.
 
-## Install Instructions
+## 2. Installation 
 
 The only dependency is the Python` hyper-h2` library:
 ```sh
@@ -102,7 +108,13 @@ Now, let's use h2cSmuggler to perform an h2c upgrade, tunnel our HTTP/2 traffic 
 
 For a deeper explanation of what is happening, check out the [technical writeup](https://labs.bishopfox.com/tech-blog/h2c-smuggling-request-smuggling-via-http/2-cleartext-h2c).
 
-### Usage
+-----------
+Note : Check also the **Plotwist challenge** writeup for a full comprehension of H2C.
+
+-----------
+
+
+## 3. Usage
 
 h2cSmuggler uses a familiar curl-like syntax for describing the smuggled request:
 ```sh
@@ -134,7 +146,7 @@ optional arguments:
   -t, --test            test a single proxy server
   -v, --verbose
 ```
-### Examples
+### 💡 Examples
 1\. Scanning a list of URLs (e.g., `https://example.com:443/api/`, `https://example.com:443/payments`, `https://sub.example.com:443/`) to identify `proxy_pass` endpoints that are susceptible to smuggling (be careful with thread counts when testing a single server):
 
 ```
@@ -172,7 +184,7 @@ Transmitting the token:
 ```
 ./h2csmuggler.py -x https://edgeserver -H "X-Forwarded-For: 127.0.0.1" -H "X-Real-IP: 172.16.0.1" http://backend/system/dashboard
 ```
-### FAQ
+### 💬 FAQ
 
 **Q: Why are there multiple responses from the server?**
 
@@ -195,5 +207,5 @@ A: The HTTP/2 protocol requires a `:scheme` pseudo-header. For our use case, `ht
 A: It's best to start with the same hostname as the edge server. Next, try experimenting with alternative hostname values.
 
 
-### Improvements 
+## 4. Improvements 
 - ✅ Added SSL support in this fork
