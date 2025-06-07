@@ -7,10 +7,10 @@
 
 ✅ **Note:** This repository was **forked to add SSL support**.
 
-1. [Description](#description)
-2. [Installation](#install-instructions)
-3. [Usage](#usage)
-4. [Improvements](#improvements)
+1. [Description](#1-description)
+2. [Installation](#2-installation)
+3. [Usage](#3-usage)
+4. [Improvements](#4-improvements)
 
 Visit this repository [DeepWiki page](https://deepwiki.com/YoursSto/h2csmuggler) to learn more about it.
 
