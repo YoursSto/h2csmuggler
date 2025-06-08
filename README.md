@@ -28,7 +28,7 @@ See my detailed write-up below for:
 
 Here: [https://labs.bishopfox.com/tech-blog/h2c-smuggling-request-smuggling-via-http/2-cleartext-h2c](https://labs.bishopfox.com/tech-blog/h2c-smuggling-request-smuggling-via-http/2-cleartext-h2c)
 
-You can also try this tool against the **Plotwist challenge (N0PSctf 2025).**
+You can also try this tool against the **[Plotwist challenge (N0PSctf 2025)](https://github.com/N0PSctf/N0PSctf-2025/tree/main/web/plotwist).**
 
 ### 🧪 Recon : How to Test? 
 
@@ -109,7 +109,7 @@ Now, let's use h2cSmuggler to perform an h2c upgrade, tunnel our HTTP/2 traffic 
 For a deeper explanation of what is happening, check out the [technical writeup](https://labs.bishopfox.com/tech-blog/h2c-smuggling-request-smuggling-via-http/2-cleartext-h2c).
 
 -----------
-Note : Check also the **Plotwist challenge** writeup for a full comprehension of H2C.
+Note : Check also the **[Plotwist challenge](https://github.com/N0PSctf/N0PSctf-2025/tree/main/web/plotwist)** writeup for a full comprehension of H2C.
 
 -----------
 
