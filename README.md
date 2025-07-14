@@ -1,7 +1,7 @@
 
 # h2cSmuggler 
 <p align="center">
-  <img src="media/logo.png" width=60%>
+  <img src="media/logo.png" width=50%>
 </p>
 
 ![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)
