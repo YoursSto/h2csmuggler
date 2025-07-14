@@ -1,5 +1,8 @@
 
-# h2cSmuggler - Plotwist
+# h2cSmuggler 
+<p align="center">
+  <img src="media/logo.png" width=60%>
+</p>
 
 ![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)
 ![Python version](https://img.shields.io/badge/python-3.x-blue.svg)
