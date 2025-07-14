@@ -8,7 +8,7 @@
 ![Python version](https://img.shields.io/badge/python-3.x-blue.svg)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/YoursSto/h2csmuggler)
 
-✅ **Note:** This repository was **forked to add SSL support**.
+✅ **Note:** This repository includes **SSL support**.
 
 1. [Description](#1-description)
 2. [Installation](#2-installation)
